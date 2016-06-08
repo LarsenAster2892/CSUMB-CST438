@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp" >
+         
+    <TextView
+        android:id="@+id/studentFname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textStyle="bold" />
+     
+    <TextView
+        android:id="@+id/studentLname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textStyle="bold"/>
+     
+     
+    <TextView
+        android:id="@+id/instructorFname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/instructorLname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textStyle="bold" />
+     
+    <TextView
+        android:id="@+id/supervisorFname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textStyle="bold"/>
+     
+     
+    <TextView
+        android:id="@+id/supervisorLname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/serviceSite"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textStyle="bold" />
+     
+    <TextView
+        android:id="@+id/course"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textStyle="bold"/>
+     
+     
+    <TextView
+        android:id="@+id/timesheetStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/sundayHours"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textStyle="bold" />
+     
+    <TextView
+        android:id="@+id/mondayHours"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textStyle="bold"/>
+     
+     
+    <TextView
+        android:id="@+id/tuesdayHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/wednesdayHours"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textStyle="bold" />
+     
+    <TextView
+        android:id="@+id/thursdayHours"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textStyle="bold"/>
+     
+     
+    <TextView
+        android:id="@+id/fridayHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/saturdayHours"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:paddingTop="6dip"
+        android:textStyle="bold" />
+     
+    <TextView
+        android:id="@+id/totalWeekHours"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:textStyle="bold"/>
+
+</LinearLayout>
+
