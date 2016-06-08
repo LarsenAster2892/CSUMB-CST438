@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="team10.cst438.sl_time_tracker_plus" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SignInActivity" >
+        </activity>
+        <activity android:name=".Menus.StudentMenuActivity" >
+        </activity>
+        <activity android:name=".StudentOptions.StudentViewTimesheetActivity" >
+        </activity>
+        <activity android:name=".StudentOptions.StudentCreateTimesheetActivity" >
+        </activity>
+        <activity android:name=".StudentOptions.StudentEditTimesheetActivity" >
+        </activity>
+        <activity android:name=".Menus.InstructorMenuActivity" >
+        </activity>
+        <activity android:name=".Menus.SupervisorMenuActivity" >
+        </activity>
+        <activity android:name=".StudentOptions.StudentViewTimeReportActivity" >
+        </activity>
+        <activity android:name=".InstructorOptions.InstructorViewTimesheetActivity" >
+        </activity>
+        <activity android:name=".InstructorOptions.InstructorViewTimeReportActivity" >
+        </activity>
+        <activity android:name=".Menus.AdministratorMenuActivity" >
+        </activity>
+        <activity android:name=".SupervisorOptions.SupervisorViewTimesheetActivity" >
+        </activity>
+        <activity android:name=".SupervisorOptions.SupervisorViewTimeReportActivity" >
+        </activity>
+        <activity android:name=".AdministratorOptions.AdministratorViewTimesheetActivity" >
+        </activity>
+        <activity android:name=".AdministratorCreateTimesheetActivity" >
+        </activity>
+        <activity android:name=".AdministratorEditTimesheetActivity" >
+        </activity>
+        <activity android:name=".AdministratorDeleteTimesheetActivity" >
+        </activity>
+        <activity android:name=".AdministratorOptions.AdministratorCreateUserActivity" >
+        </activity>
+    </application>
+
+</manifest>

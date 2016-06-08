@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main" tools:context=".MainActivity"
+    android:gravity="center_horizontal"
+    android:textAlignment="center">
+
+    <!-- Header aligned to top -->
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#002a4e"
+        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/headerTitle"
+            android:textColor="#8b7e56"
+            android:textSize="20sp"
+            android:textAlignment="center" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/InstructionsText"
+        android:id="@+id/textInstruction"
+        android:layout_below="@+id/header"
+        android:textAlignment="center"
+        android:singleLine="false"
+        android:textColor="#000000"
+        android:layout_toStartOf="@+id/otterLogo" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/otterLogo"
+        android:src="@drawable/csumbotterlogo"
+        android:layout_below="@+id/header"
+        android:layout_alignEnd="@+id/header" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbMATH170_Text"
+        android:id="@+id/cbMath170"
+        android:singleLine="true"
+        android:textColor="@color/checkbox_color"
+        android:layout_below="@+id/textInstruction"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbMATH150_Text"
+        android:id="@+id/cbMath150"
+        android:singleLine="true"
+        android:textColor="@color/checkbox_color"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cbMath170" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbCST231_Text"
+        android:id="@+id/cbCST231"
+        android:singleLine="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/checkbox_color"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cbMath150" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbCST238_Text"
+        android:id="@+id/cbCST238"
+        android:singleLine="false"
+        android:textColor="@color/checkbox_color"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cbCST231" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbCST300_Text"
+        android:id="@+id/cbCST300"
+        android:singleLine="false"
+        android:textColor="@color/checkbox_color"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/cbCST238" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbCST337_Text"
+        android:id="@+id/cbCST337"
+        android:singleLine="false"
+        android:textColor="@color/checkbox_color"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cbCST300" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgCST201_205"
+        android:baselineAligned="false"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cbCST337">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rbCST201_Text"
+            android:id="@+id/rbCST201"
+            android:layout_gravity="start"
+            android:layout_alignTop="@+id/rgCST201_205"
+            android:layout_toEndOf="@+id/rgCST201_205"
+            android:textColor="@color/checkbox_color" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rbCST205_Text"
+            android:id="@+id/rbCST205"
+            android:layout_gravity="right"
+            android:layout_alignTop="@+id/rgCST201_205"
+            android:layout_toEndOf="@+id/rgCST201_205"
+            android:textColor="@color/checkbox_color" />
+
+    </RadioGroup>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbCST373_Text"
+        android:id="@+id/cbCST373"
+        android:singleLine="false"
+        android:textColor="@color/checkbox_color"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rgCST201_205" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cbCST400_Text"
+        android:id="@+id/cbCST400"
+        android:singleLine="false"
+        android:textColor="@color/checkbox_color"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cbCST373" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgMath151_370"
+        android:baselineAligned="false"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/cbCST400">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rbMATH151_Text"
+            android:id="@+id/rbMath151"
+            android:layout_gravity="start"
+            android:layout_alignTop="@+id/rgCST201_205"
+            android:layout_toEndOf="@+id/rgCST201_205"
+            android:textColor="@color/checkbox_color"
+            android:longClickable="true" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rbMATH370_Text"
+            android:id="@+id/rbMath370"
+            android:layout_gravity="right"
+            android:layout_alignTop="@+id/rgCST201_205"
+            android:layout_toEndOf="@+id/rgCST201_205"
+            android:textColor="@color/checkbox_color" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgCST462s_361s"
+        android:baselineAligned="false"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:longClickable="true"
+        android:layout_below="@+id/rgMath151_370"
+        android:layout_alignParentStart="true">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rbCST462_Text"
+            android:id="@+id/rbCST462s"
+            android:layout_gravity="start"
+            android:layout_alignTop="@+id/rgCST201_205"
+            android:layout_toEndOf="@+id/rgCST201_205"
+            android:textColor="@color/checkbox_color"
+            android:longClickable="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rbCST361_Text"
+            android:id="@+id/rbCST361s"
+            android:layout_gravity="right"
+            android:layout_alignTop="@+id/rgCST201_205"
+            android:layout_toEndOf="@+id/rgCST201_205"
+            android:textColor="@color/checkbox_color" />
+    </RadioGroup>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnSubmit_Text"
+        android:id="@+id/btnSubmit"
+        android:singleLine="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/ThanksText"
+        android:id="@+id/textThanks"
+        android:layout_below="@+id/rgCST462s_361s"
+        android:layout_alignParentStart="true"
+        android:textColor="#f90707"
+        android:visibility="invisible" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnExit_Text"
+        android:id="@+id/btnExit"
+        android:layout_alignTop="@+id/btnSubmit"
+        android:layout_toEndOf="@+id/rgMath151_370"
+        android:visibility="invisible"
+        android:enabled="false" />
+
+</RelativeLayout>

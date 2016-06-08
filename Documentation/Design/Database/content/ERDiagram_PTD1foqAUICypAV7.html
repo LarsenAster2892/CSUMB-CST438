@@ -1,0 +1,3187 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Entity Relationship Diagram - SL Time Tracker</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select id="vplink-linkType" onchange="vpLinkToggleName()">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onclick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		SL Time Tracker ERD	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select id="vplink-linkType" onchange="vpLinkToggleName()">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onclick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Entity Relationship Diagram - SL Time Tracker		</span>
+		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('SL Time Tracker ERD.vpp://diagram/PTD1foqAUICypAV7', 'SL Time Tracker\nSL Time Tracker ERD.vpp://diagram/PTD1foqAUICypAV7', 'SL Time Tracker', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|1035.0|603.0|196.0|73.0|DBTable_vc_jFYqAUICypAd7.html|DBTable_vc_jFYqAUICypAd7.html|Pc.jFYqAUICypAd6" id="optionPc.jFYqAUICypAd6">statustypes : Entity</option>
+<option value="shape|2.0|139.0|184.0|70.0|DBTable_hp1u_YqAUICypAzL.html|DBTable_hp1u_YqAUICypAzL.html|hp1u.YqAUICypAzK" id="optionhp1u.YqAUICypAzK">usertypes : Entity</option>
+<option value="shape|848.0|224.0|212.0|87.0|DBTable_hAl6uYqAUICypAj4.html|DBTable_hAl6uYqAUICypAj4.html|hAl6uYqAUICypAj3" id="optionhAl6uYqAUICypAj3">userprojects : Entity</option>
+<option value="shape|1297.0|550.0|227.0|187.0|DBTable_YbyimYqAUICypAk5.html|DBTable_YbyimYqAUICypAk5.html|YbyimYqAUICypAk4" id="optionYbyimYqAUICypAk4">timesheetaction : Entity</option>
+<option value="shape|843.0|38.0|222.0|155.0|DBTable_eRUomYqAUICypAbg.html|DBTable_eRUomYqAUICypAbg.html|eRUomYqAUICypAbf" id="optioneRUomYqAUICypAbf">course : Entity</option>
+<option value="shape|328.0|493.0|283.0|185.0|DBTable_NgO0_oqAUICypAXe.html|DBTable_NgO0_oqAUICypAXe.html|3ki7_oqAUICypAj5" id="option3ki7_oqAUICypAj5">timesheetdetail : Entity</option>
+<option value="shape|816.0|342.0|276.0|207.0|DBTable_gf20_oqAUICypAXO.html|DBTable_gf20_oqAUICypAXO.html|o7Lb_oqAUICypAi5" id="optiono7Lb_oqAUICypAi5">timesheet : Entity</option>
+<option value="shape|1257.0|336.0|272.0|146.0|DBTable_T920_oqAUICypAWd.html|DBTable_T920_oqAUICypAWd.html|3EyC_oqAUICypAc1" id="option3EyC_oqAUICypAc1">projectapprovers : Entity</option>
+<option value="shape|1135.0|0.0|289.0|243.0|DBTable_tr20_oqAUICypAWs.html|DBTable_tr20_oqAUICypAWs.html|Ln5s_oqAUICypAZu" id="optionLn5s_oqAUICypAZu">project : Entity</option>
+<option value="shape|325.0|0.0|326.0|427.0|DBTable_BoO0_oqAUICypAXq.html|DBTable_BoO0_oqAUICypAXq.html|m2Ws_oqAUICypAZb" id="optionm2Ws_oqAUICypAZb">useraccount : Entity</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/SL_Time_Tracker.png" usemap="#diagram_map" class="Image" width="1533" height="741"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="1032.0, 549.0, 1032.0, 616.0, 1035.0, 616.0, 1035.0, 603.0, 1046.0, 603.0, 1046.0, 549.0" coords2="1032.0, 549.0, 1032.0, 616.0, 1035.0, 616.0, 1035.0, 603.0, 1046.0, 603.0, 1046.0, 549.0" shape="poly" alt="fk_statustype:Relationship" id="areadiagram_map_oqFTFYqAUICypAgi" href="DBForeignKey_d0FTFYqAUICypAgh.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1133.0, 226.0, 1083.6771, 342.0, 1092.0, 342.0, 1092.0, 358.0, 1140.8976, 243.0, 1135.0, 243.0, 1135.0, 226.76923, 1133.0, 226.0" coords2="1133.0, 226.0, 1083.6771, 342.0, 1092.0, 342.0, 1092.0, 358.0, 1140.8976, 243.0, 1135.0, 243.0, 1135.0, 226.76923, 1133.0, 226.0" shape="poly" alt="fk_projecttimesheets:Relationship" id="areadiagram_map_lxViuYqAUICypAco" href="DBForeignKey_xBViuYqAUICypAcn.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="651.0, 237.0, 651.0, 251.0, 848.0, 251.0, 848.0, 237.0" coords2="651.0, 237.0, 651.0, 251.0, 848.0, 251.0, 848.0, 237.0" shape="poly" alt="fk_userprojects:Relationship" id="areadiagram_map_6CsmuYqAUICypAlZ" href="DBForeignKey_iEsmuYqAUICypAlY.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1045.0, 218.0, 1045.0, 224.0, 1060.0, 224.0, 1060.0, 232.0, 1135.0, 232.0, 1135.0, 218.0" coords2="1045.0, 218.0, 1045.0, 224.0, 1060.0, 224.0, 1060.0, 232.0, 1135.0, 232.0, 1135.0, 218.0" shape="poly" alt="fk_projectusers:Relationship" id="areadiagram_map_4s3OuYqAUICypAma" href="DBForeignKey_2U3OuYqAUICypAmZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="186.0, 201.0, 186.0, 209.0, 168.0, 209.0, 168.0, 215.0, 325.0, 215.0, 325.0, 201.0" coords2="186.0, 201.0, 186.0, 209.0, 168.0, 209.0, 168.0, 215.0, 325.0, 215.0, 325.0, 201.0" shape="poly" alt="fk_usertype:Relationship" id="areadiagram_map_aNzh.YqAUICypA0N" href="DBForeignKey_zhzh_YqAUICypA0M.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="651.0, 108.0, 651.0, 122.0, 843.0, 122.0, 843.0, 108.0" coords2="651.0, 108.0, 651.0, 122.0, 843.0, 122.0, 843.0, 108.0" shape="poly" alt="fk_usercourse:Relationship" id="areadiagram_map_KMFSmYqAUICypAl3" href="DBForeignKey_S4FSmYqAUICypAl2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1065.0, 108.0, 1065.0, 122.0, 1135.0, 122.0, 1135.0, 108.0" coords2="1065.0, 108.0, 1065.0, 122.0, 1135.0, 122.0, 1135.0, 108.0" shape="poly" alt="fk_courseprojects:Relationship" id="areadiagram_map_.0wymYqAUICypAmY" href="DBForeignKey_ZQwymYqAUICypAmX.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1092.0, 475.5727, 1092.0, 490.8421, 1297.0, 556.4781, 1297.0, 550.0, 1310.1428, 550.0, 1311.0, 546.0, 1092.0, 475.5727" coords2="1092.0, 475.5727, 1092.0, 490.8421, 1297.0, 556.4781, 1297.0, 550.0, 1310.1428, 550.0, 1311.0, 546.0, 1092.0, 475.5727" shape="poly" alt="fk_timesheet_action:Relationship" id="areadiagram_map_.vlKmYqAUICypAoQ" href="DBForeignKey_bzlKmYqAUICypAoP.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1377.0, 243.0, 1377.0, 336.0, 1391.0, 336.0, 1391.0, 243.0" coords2="1377.0, 243.0, 1377.0, 336.0, 1391.0, 336.0, 1391.0, 243.0" shape="poly" alt="fk_project_approvers:Relationship" id="areadiagram_map_DR1qmYqAUICypAqC" href="DBForeignKey_sW1qmYqAUICypAqB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="651.0, 21.0, 651.0, 35.0, 1135.0, 35.0, 1135.0, 21.0" coords2="651.0, 21.0, 651.0, 35.0, 1135.0, 35.0, 1135.0, 21.0" shape="poly" alt="fk_project_users:Relationship" id="areadiagram_map_qmyamYqAUICypArH" href="DBForeignKey_kCyamYqAUICypArG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="651.0, 371.0, 651.0, 385.0, 816.0, 385.0, 816.0, 371.0" coords2="651.0, 371.0, 651.0, 385.0, 816.0, 385.0, 816.0, 371.0" shape="poly" alt="fk_timesheet_user:Relationship" id="areadiagram_map_E7Lb_oqAUICypAi9" href="DBForeignKey_15O0_oqAUICypAYv.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="611.0, 525.0, 611.0, 539.0, 816.0, 539.0, 816.0, 525.0" coords2="611.0, 525.0, 611.0, 539.0, 816.0, 539.0, 816.0, 525.0" shape="poly" alt="fk_timesheetdetail_timesheet:Relationship" id="areadiagram_map_Pki7_oqAUICypAj7" href="DBForeignKey_HjO0_oqAUICypAY7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Contains valid values for statustypes
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      A - Approved Timesheet
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      N - New Timesheet
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      R - Rejected Timesheet
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      S - Submitted Timesheet
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1035, 603, 1231, 676" coords2="1035, 603, 1231, 676" shape="rect" alt="statustypes:Entity" id="areadiagram_map_Pc.jFYqAUICypAd6" href="DBTable_vc_jFYqAUICypAd7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Contains valid values for usertypes:
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      A - Approver
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      I &amp;nbsp; - Instructor
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      S - Student
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Z - Admin
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="2, 139, 186, 209" coords2="2, 139, 186, 209" shape="rect" alt="usertypes:Entity" id="areadiagram_map_hp1u.YqAUICypAzK" href="DBTable_hp1u_YqAUICypAzL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    Links users to projects. &amp;nbsp;User can be on multiple projects and projects 
+    can have multiple users
+  &amp;lt;/body&amp;gt;" coords="848, 224, 1060, 311" coords2="848, 224, 1060, 311" shape="rect" alt="userprojects:Entity" id="areadiagram_map_hAl6uYqAUICypAj3" href="DBTable_hAl6uYqAUICypAj4.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Service Learning TimeSheet Actions. &amp;nbsp;Contains list of actions that 
+      require response.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      TimeSheet submit generates a record that requires approve or reject
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      TimeSheet reject generates a record that requires resubmit
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1297, 550, 1524, 737" coords2="1297, 550, 1524, 737" shape="rect" alt="timesheetaction:Entity" id="areadiagram_map_YbyimYqAUICypAk4" href="DBTable_YbyimYqAUICypAk5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Service Learning Courses
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="843, 38, 1065, 193" coords2="843, 38, 1065, 193" shape="rect" alt="course:Entity" id="areadiagram_map_eRUomYqAUICypAbf" href="DBTable_eRUomYqAUICypAbg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Service Learning Timesheet entry records &amp;nbsp;(1 for each start and end time 
+      on timesheet)
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="328, 493, 611, 678" coords2="328, 493, 611, 678" shape="rect" alt="timesheetdetail:Entity" id="areadiagram_map_3ki7_oqAUICypAj5" href="DBTable_NgO0_oqAUICypAXe.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Service Learning TimesSheets for students
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="816, 342, 1092, 549" coords2="816, 342, 1092, 549" shape="rect" alt="timesheet:Entity" id="areadiagram_map_o7Lb_oqAUICypAi5" href="DBTable_gf20_oqAUICypAXO.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Service Learning TimeSheet Approvers for Projects. &amp;nbsp;Linked to Project 
+      via project id
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1257, 336, 1529, 482" coords2="1257, 336, 1529, 482" shape="rect" alt="projectapprovers:Entity" id="areadiagram_map_3EyC_oqAUICypAc1" href="DBTable_T920_oqAUICypAWd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Service Learning Projects. &amp;nbsp;Linked to course via course id
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1135, 0, 1424, 243" coords2="1135, 0, 1424, 243" shape="rect" alt="project:Entity" id="areadiagram_map_Ln5s_oqAUICypAZu" href="DBTable_tr20_oqAUICypAWs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;margin-right:0;color:#000000;font-size:11px;font-family:Dialog;margin-left:0;font-weight:normal;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-right:0pt;margin-bottom:.0001pt;margin-left:0pt;margin-top:0pt;&amp;quot;&amp;gt;
+      Service Learning User accounts that can access the system
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="325, 0, 651, 427" coords2="325, 0, 651, 427" shape="rect" alt="useraccount:Entity" id="areadiagram_map_m2Ws_oqAUICypAZb" href="DBTable_BoO0_oqAUICypAXq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+Database Tables			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="25%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_vc_jFYqAUICypAd7.html">statustypes : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Contains valid values for statustypes<br><br>A - Approved Timesheet<br>N - New Timesheet<br>R - Rejected Timesheet<br>S - Submitted Timesheet</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_hp1u_YqAUICypAzL.html">usertypes : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Contains valid values for usertypes:<br><br>A - Approver<br>I   - Instructor<br>S - Student<br>Z - Admin</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_hAl6uYqAUICypAj4.html">userprojects : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Links users to projects.  User can be on multiple projects and projects can have multiple users</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html">timesheetaction : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Service Learning TimeSheet Actions.  Contains list of actions that require response.<br>TimeSheet submit generates a record that requires approve or reject<br>TimeSheet reject generates a record that requires resubmit</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_eRUomYqAUICypAbg.html">course : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Service Learning Courses</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html">timesheetdetail : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Service Learning Timesheet entry records  (1 for each start and end time on timesheet)</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html">timesheet : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Service Learning TimesSheets for students</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_T920_oqAUICypAWd.html">projectapprovers : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Service Learning TimeSheet Approvers for Projects.  Linked to Project via project id</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html">project : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Service Learning Projects.  Linked to course via course id</span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Entity.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Entity.png'); background-repeat: no-repeat;">
+					</div>
+&nbsp;<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html">useraccount : Entity</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Service Learning User accounts that can access the system</span>			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+statustypes Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_vc_jFYqAUICypAd7.html#s_RjFYqAUICypAeh">
+						StatusID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(1)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Primary Key.  Contains 1 character value			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_vc_jFYqAUICypAd7.html#Wf5jFYqAUICypAe3">
+						StatusValue</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Actual descriptive value			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+usertypes Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_hp1u_YqAUICypAzL.html#3xdu.YqAUICypAzR">
+						TypeID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(1)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_hp1u_YqAUICypAzL.html#s09u.YqAUICypAzU">
+						TypeValue</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(100)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+userprojects Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_hAl6uYqAUICypAj4.html#ZUz6uYqAUICypAkc">
+						ID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+primary key			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_hAl6uYqAUICypAj4.html#NaL6uYqAUICypAkj">
+						UserID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to user account			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_hAl6uYqAUICypAj4.html#Qj76uYqAUICypAkm">
+						ProjectID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to project			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+timesheetaction Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#8NRimYqAUICypAlD">
+						ID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Primary key			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#lw1imYqAUICypAlh">
+						TimeSheetID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to timesheet record			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#mAzimYqAUICypAlj">
+						StudentID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Links to student user record			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#1gPimYqAUICypAll">
+						ApproverID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to approver user record			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#X4USmYqAUICypAln">
+						ProjectID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to project record			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#u6uSmYqAUICypAlp">
+						CourseID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to course record			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#jW0qmYqAUICypApQ">
+						ActionBy</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to user that performed the last action that needed response			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#rW0qmYqAUICypApS">
+						ActionDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Date and time of action			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_YbyimYqAUICypAk5.html#pbS6mYqAUICypAtB">
+						ActionType</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">tinyint</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Values
+2 - Submitted TimeSheet
+3 - Approved TimeSheet
+4 - Rejected TimeSheet			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+course Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_eRUomYqAUICypAbg.html#2IyomYqAUICypAcF">
+						ID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+primary key			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_eRUomYqAUICypAbg.html#9eKomYqAUICypAcI">
+						Name</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Name of course			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_eRUomYqAUICypAbg.html#oZ5omYqAUICypAdH">
+						CourseNumber</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+course number			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_eRUomYqAUICypAbg.html#OIjomYqAUICypAdJ">
+						StartDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+start date of course			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_eRUomYqAUICypAbg.html#dxXomYqAUICypAdL">
+						EndDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+end date of course			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_eRUomYqAUICypAbg.html#MMAYmYqAUICypAdN">
+						InstructorID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to instructor			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_eRUomYqAUICypAbg.html#Ni4YmYqAUICypAdP">
+						ArchiveFlag</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">bit(1)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Set true (not zero) when course has been archived otherwise false (zero)			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+timesheetdetail Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#QoO0_oqAUICypAXf">
+						ID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Primary key			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#trO0_oqAUICypAY8">
+						TimeSheetID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+link to main timesheet information			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#5PO0_oqAUICypAZE">
+						UserID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+link back to user of timesheet			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#6oO0_oqAUICypAXn">
+						WeekDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+date of the week for timesheet detail record			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#cjQMmYqAUICypAhr">
+						WeekDayNumber</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">tinyint</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+weekday number for timesheet information
+1 - Sunday
+2 - Monday
+3 - Tuesday
+4 - Wednesday
+5 -Thursday
+6 - Friday
+7 - Saturday			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#4U77_oqAUICypAlL">
+						SeqNumber</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Sequence Number used to place on the screen in correct order.			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#OoO0_oqAUICypAXo">
+						Hours</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">decimal(10)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Hours for time entry			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#Qwj7_oqAUICypAlF">
+						StartTime</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">time</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Start time for time entry			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_NgO0_oqAUICypAXe.html#X4b7_oqAUICypAlI">
+						EndTime</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">time</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+End time for time entry			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+timesheet Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#AgO0_oqAUICypAXP">
+						ID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Primary Key			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#Y1O0_oqAUICypAYw">
+						UserID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Links to user			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#1xViuYqAUICypAcq">
+						projectID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Links to Project			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#ygO0_oqAUICypAXV">
+						WeekEndingDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Ending date of the week for timesheet			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#agO0_oqAUICypAXW">
+						Status</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(1)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Links to valid status values
+N - New TimeSheet but not saved by user
+S - Submitted TimeSheet
+A - Approved TimeSheet
+R - Rejected TimeSheet			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#7v20_oqAUICypAXK">
+						DateCreated</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Date timesheet was created			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#0Dg0mYqAUICypAgg">
+						LastUpdatedBy</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Who made the last update			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#_v20_oqAUICypAXN">
+						LastUpdateDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+date of last update			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_gf20_oqAUICypAXO.html#YLXkmYqAUICypAe5">
+						ArchiveFlag</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">bit(1)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Set true (not zero) when timesheet has been archived otherwise false (zero)			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+projectapprovers Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_T920_oqAUICypAWd.html#Gr20_oqAUICypAWf">
+						ID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+primary key			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_T920_oqAUICypAWd.html#QcO0_oqAUICypAYL">
+						ProjectID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to project			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_T920_oqAUICypAWd.html#mI0y_oqAUICypAfM">
+						ApproverID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links to user account that can approve timesheet			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_T920_oqAUICypAWd.html#Fr20_oqAUICypAWm">
+						Notes</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_T920_oqAUICypAWd.html#Dw3smYqAUICypAiC">
+						LastUpdatedBy</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+user who last updated this record			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_T920_oqAUICypAWd.html#NpPsmYqAUICypAiI">
+						LastUpdateDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+date of last update			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+project Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#7n20_oqAUICypAWt">
+						ID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Primary key			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#3n20_oqAUICypAWx">
+						Title</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Name of project			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#Pn20_oqAUICypAWz">
+						Description</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(500)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+detailed description of project			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#vn20_oqAUICypAW0">
+						StartDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+project start date			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#fn20_oqAUICypAW1">
+						EndDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+project end date			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#z53EmYqAUICypAeE">
+						CourseID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+links project to course			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#dv20_oqAUICypAXH">
+						Notes</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(500)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#9GO0_oqAUICypAYY">
+						LastUpdatedBy</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+who updated this record last			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#IX20_oqAUICypAW9">
+						LastUpdateDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+date of last update			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_tr20_oqAUICypAWs.html#FwVkmYqAUICypAeM">
+						ArchiveFlag</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">bit(1)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Set true (not zero) when project has been archived otherwise false (zero)			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+useraccount Table			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="10" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="15%">
+<span class="TableHeaderText">Column Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="10%">
+<span class="TableHeaderText">Data Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="7%">
+<span class="TableHeaderText">PK / FK</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="5%">
+<span class="TableHeaderText">Nullable</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td width="*">
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="10" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#LkO0_oqAUICypAXr">
+						ID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+PK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#D6L5uYqAUICypAwF">
+						UserAccount</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+If Student then User OtterID, otherwise first Letter of User's first name, first 3 of User's last name and random 4 digits...			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#Fejc_oqAUICypAbx">
+						UserType</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(1)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Link key for usertypes			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#bkO0_oqAUICypAXt">
+						FirstName</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+User's First Name			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#7kO0_oqAUICypAXu">
+						LastName</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+User's Last Name			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#HkO0_oqAUICypAXv">
+						OtherName</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+User's Nick Name or Other name			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#nkO0_oqAUICypAXw">
+						EmailAddress</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+User's Email Address			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#XkO0_oqAUICypAXx">
+						PhoneNumber</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(15)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+User's telephone number			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#3kO0_oqAUICypAXy">
+						CellPhoneNumber</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(15)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+User's cell phone number			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#PkO0_oqAUICypAXz">
+						Password</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(50)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+encrypted password			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#fkO0_oqAUICypAX1">
+						Notes</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(1000)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Notes on user			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#_kO0_oqAUICypAX2">
+						SecurityQuestion</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Security questions for forgotten password			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#AUO0_oqAUICypAX3">
+						SecurityAnswer</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">varchar(255)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+security question answer for forgotten password			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#cqycmYqAUICypAiW">
+						CourseID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+link to course			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#ofDymYqAUICypAnT">
+						ProjectID</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+FK			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+ID of project user is assigned to if type is student			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#oUO0_oqAUICypAX.">
+						IsActive</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">tinyint</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+No			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+flag for deactivating user
+0 - Not Active User
+1 - Active user			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#4UO0_oqAUICypAYA">
+						LoginReties</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">tinyint</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Number of tries on last attempt to login....			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#EUO0_oqAUICypAYB">
+						NextPasswordChangeDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">date</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+date when password must be changed			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#kUO0_oqAUICypAYC">
+						LastLoginDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+date of last login			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#axucmYqAUICypAir">
+						LastUpdatedBy</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">int(11)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+who made last update			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#mxucmYqAUICypAiu">
+						LastUpdateDate</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">datetime</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+date of last update			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<a class="ItemLink" href="DBTable_BoO0_oqAUICypAXq.html#rT9kmYqAUICypAeV">
+						ArchiveFlag</a>
+				</span>
+			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">bit(1)</span>			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Yes			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Set true (not zero) when user account has been archived otherwise false (zero)			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		SL Time Tracker ERD	</div>
+</body>
+</html>

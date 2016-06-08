@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">SL_Time_Tracker_Plus</string>
+    <string name="Login">Login</string>
+    <string name="viewTimesheet">View Timesheet</string>
+    <string name="createTimesheet">Create Timesheet</string>
+    <string name="editTimesheetButton">Edit Timesheet</string>
+    <string name="viewTimeReport">View Time Report</string>
+    <string name="submit">Submit</string>
+    <string name="deleteTimesheet">Delete Timesheet</string>
+    <string name="createUser">Create User</string>
+    <string name="sundayLabel">Sunday Hours</string>
+    <string name="saturdayLabel">Saturday Hours</string>
+    <string name="fridayLabel">Friday Hours</string>
+    <string name="thursdayLabel">Thursday Hours</string>
+    <string name="wednesdayLabel">Wednesday Hours</string>
+    <string name="tuesdayLabel">Tuesday Hours</string>
+    <string name="mondayLabel">Monday Hours</string>
+    <string name="update">Update</string>
+    <string name="usernameHint">Insert Student Username Here</string>
+    <string name="approve">Approve</string>
+    <string name="deny">Deny</string>
+    <string name="status">Status</string>
+    <string name="timesheetsNonApproved">Timesheets Non Approved</string>
+    <string name="timesheetsApproved">Timesheets Approved</string>
+    <string name="nonApprovedHours">Non Approved Hours</string>
+    <string name="approvedHours">Approved Hours</string>
+    <string name="totalHours">Total Hours</string>
+    <string name="username">username</string>
+
+    <string-array name="roles_array">
+        <item>Student</item>
+        <item>Instructor</item>
+        <item>Supervisor</item>
+        <item>Administrator</item>
+    </string-array>
+</resources>

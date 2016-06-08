@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">CST338HW7</string>
+    <string name="action_settings">Settings</string>
+    <string name="headerTitle">CSUMB CSIT Program Core Classes</string>
+    <string name="cbCST201_205_Text">CST 201-205</string>
+    <string name="rbCST201_Text">CST 201</string>
+    <string name="rbCST205_Text">CST 205</string>
+    <string name="cbCST231_Text">CST 231</string>
+    <string name="cbCST238_Text">CST 238</string>
+    <string name="cbCST300_Text">CST 300</string>
+    <string name="cbCST337_Text">CST 337</string>
+    <string name="cbCST373_Text">CST 373</string>
+    <string name="rbCST361_Text">CST 361s</string>
+    <string name="rbCST462_Text">CST 462s</string>
+    <string name="cbCST400_Text">CST 400</string>
+    <string name="cbMATH150_Text">MATH 150</string>
+    <string name="rbMATH151_Text">MATH 151</string>
+    <string name="cbMATH170_Text">MATH 170</string>
+    <string name="rbMATH370_Text">MATH 370</string>
+    <string name="btnSubmit_Text">Submit</string>
+    <string name="ThanksText">Thanks for your submission</string>
+    <string name="InstructionsText">Please checkoff any classes you have completed to-date</string>
+    <string name="btnExit_Text">EXIT</string>
+</resources>
